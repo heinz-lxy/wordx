@@ -1,0 +1,9 @@
+<w:p>
+	<w:r>
+		<w:pict>
+			<v:shape style="width:431.4pt;height:225pt">
+				<v:imagedata r:id="{{ res_id }}"/>
+			</v:shape>
+		</w:pict>
+	</w:r>
+</w:p>

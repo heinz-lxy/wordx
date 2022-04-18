@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+	{% for resource in resources %}
+	<Relationship Id="{{ resource['r_id'] }}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/{{ resource['r_type'] }}" Target="{{ resource['r_file'] }}"/>
+	{% endfor %}
+</Relationships>

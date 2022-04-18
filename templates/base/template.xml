@@ -1,0 +1,39 @@
+{% include "base/doc_header.xml" %}
+
+{% for item in data %}
+	{% if item['type']=='paragraph' %}
+		{% with %}
+			{% set text=item['content'] %}
+			{% include 'base/paragraph.xml' %}
+		{% endwith %}
+	{% elif item['type']=='table' %}
+		{% with %}
+			{% set table_data=item['content'] %}
+			{% include 'base/table.xml' %}
+		{% endwith %}
+	{% elif item['type']=='image' %}
+		{% with %}
+			{% set res_id=item['content'] %}
+			{% include 'base/image.xml' %}
+		{% endwith %}
+	{% elif item['type']=='catalog' %}
+		{% with %}
+			{% set content=item['content'] %}
+			{% include 'base/catalog.xml' %}
+		{% endwith %}
+	{% elif item['type']=='blank' %}
+		{% include 'base/page/blank.xml' %}
+	{% elif item['type']=='vertical' %}
+		{% include 'base/page/vertical.xml' %}
+	{% elif item['type']=='horizontal' %}
+		{% include 'base/page/horizontal.xml' %}
+	{% endif %}
+{% endfor %}
+
+
+{% include "base/doc_footer.xml" %}
+
+
+
+
+
