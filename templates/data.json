@@ -1,0 +1,19 @@
+{
+	"data":[
+	{
+		"type": "paragraph",
+		"content": "my name is"
+	},
+	{
+		"type": "paragraph",
+		"content": "michael"
+	},
+	{
+	    "type": "table",
+	    "content": {
+	    	"header":["姓名","年龄","职业"],
+	        "data": [[1,2,3]]
+	    }
+	}
+	]
+}

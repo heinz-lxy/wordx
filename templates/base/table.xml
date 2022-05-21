@@ -14,7 +14,7 @@
         <w:trPr>
             <w:trHeight w:val="797"/>
         </w:trPr>
-        {% for cell in table_data['header'] %}
+        ($ for cell in table_data['header'] $)
         <w:tc>
             <w:tcPr>
                 <w:tcW w:w="3079" w:type="dxa"/>
@@ -30,36 +30,36 @@
                         <w:sz w:val="30"/>
                         <w:b/>
                     </w:rPr>
-                    <w:t>{{ cell }}</w:t>
+                    <w:t>(( cell ))</w:t>
                 </w:r>
             </w:p>
         </w:tc>
-        {% endfor %}
+        ($ endfor $)
     </w:tr>
-    {% for row in table_data['data'] %}
+    ($ for row in table_data['data'] $)
     <w:tr>
         <w:trPr>
             <w:trHeight w:val="797"/>
         </w:trPr>
-        {% for cell in row %}
-            {% if cell!='h' %}
+        ($ for cell in row $)
+            ($ if cell!='h' $)
             <w:tc>
                 <w:tcPr>
                     <w:tcW w:w="3079" w:type="dxa"/>
                     <w:vAlign w:val="center"/>
-                    {% if cell=='v' %}
+                    ($ if cell=='v' $)
                     <w:vMerge/>
-                    {% endif %}
-                    {% if isinstance(cell,tuple) %}
-                        {% with %}
-                            {% set mark=cell[1] %}
-                            {% if mark==0 %}
+                    ($ endif $)
+                    ($ if isinstance(cell,tuple) $)
+                        ($ with $)
+                            ($ set mark=cell[1] $)
+                            ($ if mark==0 $)
                             <w:vMerge w:val="restart"/>
-                            {% else %}
-                            <w:gridSpan w:val="{{ mark }}"/>
-                            {% endif %}
-                        {% endwith %}                
-                    {% endif %}
+                            ($ else $)
+                            <w:gridSpan w:val="(( mark ))"/>
+                            ($ endif $)
+                        ($ endwith $)                
+                    ($ endif $)
                 </w:tcPr>
                 <w:p>
                     <w:pPr>
@@ -71,17 +71,17 @@
                             <w:sz w:val="30"/>
                         </w:rPr>
                         <w:t>
-                            {% if isinstance(cell,tuple) %}
-                                {{ cell[0] }}
-                            {% else %}
-                                {{ cell }}
-                            {% endif %}
+                            ($ if isinstance(cell,tuple) $)
+                                (( cell[0] ))
+                            ($ else $)
+                                (( cell ))
+                            ($ endif $)
                         </w:t>
                     </w:r>
                 </w:p>
             </w:tc>
-            {% endif %}
-        {% endfor %}
+            ($ endif $)
+        ($ endfor $)
     </w:tr>
-    {% endfor %}
+    ($ endfor $)
 </w:tbl>

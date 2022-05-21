@@ -4,7 +4,9 @@ from lxml import etree
 from lxml.builder import E
 from io import BytesIO
 import random
-# from os import startfile
+import platform
+if platform.system() == 'Windows':	
+	from os import startfile
 
 
 class WordFile(FakeZip):
@@ -17,7 +19,7 @@ class WordFile(FakeZip):
 
 	def show(self):
 	    """ 打开word"""
-	    # startfile(self.file_path)
+	    startfile(self.file_path)
 
 	def get_document(self):
 		"""获取document文件

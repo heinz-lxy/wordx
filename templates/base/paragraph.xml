@@ -9,6 +9,6 @@
 			<w:rFonts w:hint="eastAsia" w:eastAsia="仿宋_GB2312"/>
 			<w:sz w:val="30"/>
 		</w:rPr>
-		<w:t>{{ text }}</w:t>
+		<w:t>(( text ))</w:t>
 	</w:r>
 </w:p>

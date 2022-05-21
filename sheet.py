@@ -5,7 +5,9 @@ from jinja2 import Template
 def render_template(tpl, data):
     lib = {
         'enumerate': enumerate,
-        'len': len
+        'len': len,
+        'isinstance': isinstance,
+        'tuple': tuple
     }
     return Template(tpl).render(**data, **lib)
 

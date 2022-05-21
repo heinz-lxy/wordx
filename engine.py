@@ -1,8 +1,8 @@
 from jinja2 import Environment, FileSystemLoader
 from os import path
 
-class Template(object):
-    """模板系统"""
+class Engine(object):
+    """模板渲染引擎"""
     def __init__(self):
         PATH = path.dirname(path.abspath(__file__))
         self.env = Environment(
@@ -19,7 +19,9 @@ class Template(object):
         return self.render_template(template_xml, data = data, isinstance=isinstance, tuple=tuple)
 
 if __name__ == '__main__':
-    engine = Template() 
+    from word_file import WordFile
+
+    engine = Engine() 
     data = [{
         'type': 'table',
         'content': {
@@ -27,4 +29,19 @@ if __name__ == '__main__':
         }
     }]
     rst = engine.render('base/template.xml',data=data)
+    grammer_map = {
+        r'($': '{%',
+        r'$)': '%}',
+        r'((': '{{',
+        r'))': '}}',
+    }
+    rst = rst.replace('($', '{%')
+    rst = rst.replace('$)', '%}')
+    rst = rst.replace('((', '{{')
+    rst = rst.replace('))', '}}')
+    wf = WordFile('templates/template.docx')
+    wf.replace('word/document.xml',rst)
+    wf.save('123.docx')
+        # print()
+    print('_____________')
     print(rst)

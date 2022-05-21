@@ -1,13 +1,11 @@
 from word_file import WordFile
-from template import Template 
+from engine import Engine
 import xml.etree.ElementTree as etree
-# from lxml import etree
-# from lxml.builder import E
 from io import BytesIO
 
 
 wf = WordFile('template.docx')
-engine = Template() 
+engine = Engine() 
 data = [
 {
     'type': 'table',
@@ -16,7 +14,6 @@ data = [
         'data': [[1,2,3]]
     }
 }, 
-{
 	'type': 'paragraph',
 	'content': '123'
 }, 
@@ -31,12 +28,4 @@ print(rst)
 wf.replace('word/document.xml',rst)
 wf.save('123.docx')
 # wf.show()
-
-
-# doc = wf.get_document()
-# tree = etree.parse(BytesIO(doc))
-# # print(tree)
-# print(etree.tostring(tree.getroot(), encoding='utf8', method='xml'))
-# # body = tree.find('w:body')
-# # print(body)
 
